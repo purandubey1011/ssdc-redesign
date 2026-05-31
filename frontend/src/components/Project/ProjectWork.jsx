@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const filters = ['All', 'Living Rooms', 'Bedrooms', 'Kitchens', 'Full Homes', 'Renovations']
 
 const projects = [
@@ -8,6 +10,11 @@ const projects = [
   '/project/our work/img5.jpg',
   '/project/our work/img6.jpg',
 ]
+
+const saveProjectScroll = () => {
+  sessionStorage.setItem('projectScrollY', String(window.scrollY))
+  sessionStorage.setItem('restoreProjectScroll', 'true')
+}
 
 const ProjectCard = ({ image, align = 'left' }) => (
   <article
@@ -26,19 +33,20 @@ const ProjectCard = ({ image, align = 'left' }) => (
     <div className="mt-[15px] flex items-start justify-between gap-6">
       <div>
         <h3 className="text-[16px] font-semibold leading-none tracking-[-0.02em] max-[640px]:text-[14px]">
-          Modern Luxury Apartment – Siliguri
+          Modern Luxury Apartment - Siliguri
         </h3>
         <p className="mt-[8px] text-[9px] font-light leading-none tracking-[-0.01em] text-[#5d5852] max-[640px]:text-[8px]">
           Warm Tones, Minimal Lines &amp; Refined Textures For Timeless Elegance.
         </p>
       </div>
 
-      <a
-        href="/"
+      <Link
+        to="/project/modern-luxury-apartment-siliguri"
+        onClick={saveProjectScroll}
         className="shrink-0 text-[13px] font-light leading-none tracking-[-0.01em] text-black max-[640px]:text-[11px]"
       >
         View Project <span className="ml-[9px] text-[16px]">&raquo;</span>
-      </a>
+      </Link>
     </div>
   </article>
 )
